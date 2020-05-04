@@ -1,0 +1,116 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button> -->
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0"> -->
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <span>
+          <button class="btn btn-outline-success my-2 my-sm-0" (click)="openDialog()" >Login</button>
+        </span>
+      <!-- </form> -->
+    </div>
+  </nav>
+</div>
+<div class="container" >
+  <div  class="alert alert-success my-2" role="alert">
+    Welcome sachin
+   </div>
+   <mat-tab-group>
+    <mat-tab label="First">  <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">CenterName</th>
+          <th scope="col">Address</th>
+          <th scope="col">Contact Info</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let center of diagnosticCenter">
+          <th scope="row">{{center.centerid}}</th>
+          <td>{{center.centername}}</td>
+          <td>{{center.address}}</td>
+          <td>{{center.contact}}</td>
+          <td><button mat-raised-button color="primary" (click)="onSelect(center)">Select</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>{{currentCenterName}}</h2>
+    <table class="table table-hover" *ngIf="tableStatus" >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">TestName</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let test of test">
+          <th scope="row">{{test.testId}}</th>
+
+          <td>{{test.testname}}</td>
+          <!-- <td>{{center.contact}}</td> -->
+          <td><button class="btn btn-success" [disabled]="buttonstatus" (click)="onTestSelect(test)">Select</button></td>
+        </tr>
+        <!-- <tr><th></th><td></td><td></td></tr> -->
+        <!-- <span class="d-flex justify-content-end"><button>click me</button></span> -->
+        <!-- <tr class="d-flex justify-content-end">
+         <button>submit</button>
+        </tr> -->
+      </tbody>
+    </table></mat-tab>
+    <mat-tab label="View Appointment">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Patient_ID</th>
+            <th scope="col">Date</th>
+
+            <th scope="col">Test_Name</th>
+            <th scope="col">Test_Center_Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of arrayDetails">
+            <th scope="row">{{record.patientid}}</th>
+            <td>{{record.date}}</td>
+
+            <td>{{record.testName}}</td>
+            <td>{{record.Centername}}</td>
+            <td><button mat-raised-button color="warn" (click)="onCancelRecord(record.patientid)">Cancel</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-tab>
+
+    <mat-tab label="Third"> Content 3 </mat-tab>
+  </mat-tab-group>
+
+  <button *ngIf="btnStatus" type="button" class="btn btn-primary btn-lg" (click)="openDialog1()">Make An Appointment</button>
+
+</div>
+
+  <!-- <mat-form-field class="example-full-width">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> -->

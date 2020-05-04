@@ -1,0 +1,18 @@
+<form>
+  <h2 mat-dialog-title>Login Details</h2>
+  <div class="form-group">
+    <input type="text" #name name="username" class="form-control" placeholder="Enter your name">
+  </div>
+  <div class="form-group">
+    <input type="password" #password name="password" class="form-control" placeholder="*******">
+  </div>
+  <!-- <mat-dialog-actions class="mt-0">
+    <button class="btn btn-primary"mat-dialog-close>close</button>
+  </mat-dialog-actions> -->
+  <mat-dialog-actions class="mt-0">
+    <!-- <button class="btn btn-primary"mat-dialog-close>close</button> -->
+    <button class="btn btn-primary" type="submit" (click)="onSubmit(name.value,password.value)" mat-dialog-close>Submit</button>
+  </mat-dialog-actions>
+  <!-- <button class="btn btn-primary" (click)="onSubmit(name.value,password.value)">Submit</button> -->
+</form>
+<!-- {{userName}} -->
